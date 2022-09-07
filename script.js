@@ -41,13 +41,6 @@ $(document).ready(function(){
         loop: true
     });
 
-    var typed = new Typed(".typing-2", {
-        strings: ["Software Engineer", ".NET Developer", "Full Stack Web and Desktop App Developer", "Author", "Designer", "Freelancer", "Techie"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
-
     // owl carousel script
     $('.carousel').owlCarousel({
         margin: 20,

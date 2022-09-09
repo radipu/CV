@@ -596,13 +596,59 @@ section .title::after{
 
 .centered {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(7, 207, 207);
+    background-color: rgba(0,0,0,.5);
+    width: 100%;
+    left: 0px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    top: 83.5%;
+    border-radius: 0 0 15px 15px;
   }
+
+  /* pagination */
+.pagination {
+    text-align: center;
+    margin: 30px 30px 60px;
+    user-select: none;
+}
+.pagination li {
+    display: inline-block;
+    margin: 5px;
+    box-shadow: 0 5px 25px rgb(1 1 1 / 10%);
+}
+.pagination li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    line-height: 45px;
+}
+.previous-page, .next-page {
+    background: #0ab1ce;
+    width: 80px;
+    border-radius: 45px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.previous-page:hover {
+    transform: translateX(-5px);
+}
+.next-page:hover {
+    transform: translateX(5px);
+}
+.current-page, .dots {
+    background: #ccc;
+    width: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.pagination .active {
+    background: crimson;
+    color: #fff;
+}
+.disable {
+    background: #ccc;
+}
 
 /* teams section styling */
 .teams .title::after{
@@ -904,4 +950,3 @@ footer span a:hover{
         line-height: 38px;
     }
 }
-

@@ -128,8 +128,8 @@ $(function(){
   }
 
   $(".pagination").append(
-    $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
-    $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
+    $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").text("Prev")),
+    $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").text("Next"))
   );
 
   $(".portfolios").show();

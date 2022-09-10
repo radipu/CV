@@ -350,6 +350,9 @@ section .title::after{
 .skills-content .right .database::before{
     width: 75%;
 }
+.skills-content .right .interpersonal-skills::before{
+    width: 100%;
+}
 
 /*Timeline*/
 .timeline .title::after{

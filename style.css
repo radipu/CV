@@ -728,6 +728,9 @@ section .title::after{
     font-weight: 600;
     margin-bottom: 10px;
 }
+.contact .contact-content .text span{
+    color: crimson;
+}
 .contact .contact-content .left p{
     text-align: justify;
 }

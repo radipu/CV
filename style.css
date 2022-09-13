@@ -385,6 +385,9 @@ section .title::after{
   align-items: center;
   justify-content: center;
 }
+.timeline .timeline-item .tl-icon:hover {
+  background-color: crimson;
+}
 .timeline .timeline-item .tl-icon i {
   font-size: 1.3rem;
 }
@@ -437,7 +440,6 @@ section .title::after{
     text-align: center;
     border-radius: 6px;
     padding: 50px 25px;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 .services .serv-content .card:hover{

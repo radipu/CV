@@ -958,3 +958,47 @@ footer span a:hover{
         line-height: 38px;
     }
 }
+
+/* portfolio buttons */
+.portfolio .portfolio-filter
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+    /* padding: 20px; */
+    text-align: center;
+}
+.portfolio .portfolio-filter button
+{
+    text-transform: uppercase;
+    margin-top: -20px;
+    outline: none;
+    border: 1px solid;
+    border-color: crimson;
+    padding: 8px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: var(--color-white);
+    margin-right: 20px;
+    /* margin-bottom: 20px; */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.portfolio .portfolio-filter button:last-child
+{
+    margin-right: 0;
+}
+.portfolio .portfolio-filter button:hover,
+.portfolio .portfolio-filter button.active 
+{
+    color: white;
+    background-color: crimson;
+}
+.portfolio .portfolio-item.hide 
+{
+    display: none;
+}
+.portfolio .portfolio-item.show
+{
+    display: block;
+    animation:  showItem 0.5s ease;
+}

@@ -441,6 +441,7 @@ section .title::after{
     border-radius: 6px;
     padding: 50px 25px;
     transition: all 0.3s ease;
+    margin-bottom: 40px;
 }
 .services .serv-content .card:hover{
     background: crimson;

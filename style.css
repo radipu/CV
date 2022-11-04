@@ -739,7 +739,7 @@ section .title::after{
     margin-top: 100px;
 }
 
-/* .teams .carousel .card::before {
+.teams .carousel .card::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -750,7 +750,7 @@ section .title::after{
     background: linear-gradient(transparent, crimson, crimson, crimson, transparent);
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
-} */
+}
 
 /* .teams .carousel .card::after {
     content: '';

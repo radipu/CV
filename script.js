@@ -157,36 +157,163 @@ $(document).ready(function(){
 // });
 
 //poftfolio classified buttons
-const FilterContainer = document.querySelector(".portfolio-filter"),
-filterBtns = FilterContainer.children;
-totalFilterBtn = filterBtns.length;
-PortfolioItems = document.querySelectorAll(".portfolio-item"),
-console.log(PortfolioItems)
-totalportfolioItem = PortfolioItems.length;
-for(let i=0; i < totalFilterBtn; i++)
-{
-    filterBtns[i].addEventListener("click", function()
-    {
-        FilterContainer.querySelector(".active").classList.remove("active");
-        this.classList.add("active");
-        const filterValue = this.getAttribute("data-filter")
-        for( let k=0; k<totalportfolioItem; k++)
-        {
-            if(filterValue === PortfolioItems[k].getAttribute("data-category"))
-            {
-                PortfolioItems[k].classList.remove("hide");
-                PortfolioItems[k].classList.add("show");
-            }
-            else
-            {
-                PortfolioItems[k].classList.remove("show");
-                PortfolioItems[k].classList.add("hide");
-            }
-            if(filterValue === "all")
-            {
-                PortfolioItems[k].classList.remove("hide");
-                PortfolioItems[k].classList.add("show");
-            }
-        }
-    })
+// JavaScript code for pagination and filtering
+const itemsPerPage = 6; // Number of items to display per page
+
+const filterContainer = document.querySelector(".portfolio-filter");
+const filterBtns = filterContainer.querySelectorAll("button");
+const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+let currentPage = 1;
+let currentCategory = "all";
+
+// Function to display the specified page of items based on the current category
+function displayItems(page, category) {
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = page * itemsPerPage;
+
+  let count = 0;
+  portfolioItems.forEach((item) => {
+    const itemCategory = item.dataset.category;
+    if (category === "all" || itemCategory === category) {
+      if (count >= startIndex && count < endIndex) {
+        item.classList.add("show");
+        item.classList.remove("hide");
+      } else {
+        item.classList.add("hide");
+        item.classList.remove("show");
+      }
+      count++;
+    } else {
+      item.classList.add("hide");
+      item.classList.remove("show");
+    }
+  });
 }
+
+// Function to create pagination buttons based on the number of items and categories
+function createPaginationButtons(totalPages) {
+  const paginationContainer = document.querySelector(".pagination");
+  paginationContainer.innerHTML = "";
+
+  if (totalPages <= 1) {
+    return;
+  }
+
+  const prevButton = document.createElement("li");
+  prevButton.classList.add("page-item", "previous-page", "disable");
+  prevButton.innerHTML = '<a class="page-link" href="#"></a>Prev';
+  paginationContainer.appendChild(prevButton);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement("li");
+    pageButton.classList.add("page-item", "current-page");
+    pageButton.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+    paginationContainer.appendChild(pageButton);
+
+    if (i === currentPage) {
+      pageButton.classList.add("active");
+    }
+
+    pageButton.addEventListener("click", function () {
+      if (!this.classList.contains("active")) {
+        const activeButton = paginationContainer.querySelector(".current-page.active");
+        activeButton.classList.remove("active");
+        this.classList.add("active");
+        currentPage = i;
+        displayItems(currentPage, currentCategory);
+      }
+    });
+  }
+
+  const nextButton = document.createElement("li");
+  nextButton.classList.add("page-item", "next-page");
+  nextButton.innerHTML = '<a class="page-link" href="#">Next</a>';
+  paginationContainer.appendChild(nextButton);
+
+  function handleNextButtonClick() {
+    const activeButton = paginationContainer.querySelector(".current-page.active");
+    if (activeButton.nextSibling && !activeButton.nextSibling.classList.contains("next-page")) {
+      activeButton.classList.remove("active");
+      activeButton.nextSibling.classList.add("active");
+      currentPage++;
+      displayItems(currentPage, currentCategory);
+      scrollToPortfolioSection();
+    }
+  }
+
+  function scrollToPortfolioSection() {
+    const portfolioSection = document.getElementById("portfolio");
+    portfolioSection.scrollIntoView({ behavior: "smooth" });
+  }
+
+  nextButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    handleNextButtonClick();
+  });
+
+  prevButton.addEventListener("click", function () {
+    const activeButton = paginationContainer.querySelector(".current-page.active");
+    if (activeButton.previousSibling && !activeButton.previousSibling.classList.contains("previous-page")) {
+      activeButton.classList.remove("active");
+      activeButton.previousSibling.classList.add("active");
+      currentPage--;
+      displayItems(currentPage, currentCategory);
+    }
+  });
+}
+
+// Function to handle filtering when a filter button is clicked
+function handleFilterClick(category) {
+    if (currentCategory !== category) {
+      currentCategory = category;
+      currentPage = 1;
+      displayItems(currentPage, currentCategory);
+  
+      // Add the active class to the clicked button and remove it from others
+      filterBtns.forEach((btn) => {
+        if (btn.getAttribute("data-filter") === category) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+  
+      // Filter the items based on the selected category
+      let filteredItems = [];
+      portfolioItems.forEach((item) => {
+        if (currentCategory === "all" || item.dataset.category === currentCategory) {
+          filteredItems.push(item);
+        }
+      });
+  
+      // Calculate the total number of pages based on the filtered items
+      const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+  
+      createPaginationButtons(totalPages);
+    }
+  }
+
+// Event listener for filter buttons
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const category = this.getAttribute("data-filter");
+    handleFilterClick(category);
+  });
+});
+
+// Initial display on page load
+displayItems(currentPage, currentCategory);
+
+// Filter the items based on the selected category
+let filteredItems = [];
+portfolioItems.forEach((item) => {
+  if (currentCategory === "all" || item.dataset.category === currentCategory) {
+    filteredItems.push(item);
+  }
+});
+
+// Calculate the total number of pages based on the filtered items
+const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+createPaginationButtons(totalPages);

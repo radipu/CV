@@ -468,7 +468,7 @@ section .title::after{
 
 /* portfolio section styles */
 .portfolio .title::after{
-    content: "what i done";
+    content: "what have i done";
 }
 
 :root {

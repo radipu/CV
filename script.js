@@ -238,13 +238,7 @@ function createPaginationButtons(totalPages) {
       activeButton.nextSibling.classList.add("active");
       currentPage++;
       displayItems(currentPage, currentCategory);
-      scrollToPortfolioSection();
     }
-  }
-
-  function scrollToPortfolioSection() {
-    const portfolioSection = document.getElementById("portfolio");
-    portfolioSection.scrollIntoView({ behavior: "smooth" });
   }
 
   nextButton.addEventListener("click", function (event) {

@@ -520,7 +520,7 @@ section .title::after{
 }
 .portfolios .portfolio-item .hover-items {
   width: 100%;
-  height: 100%;
+  height: 300px;
   background-color: crimson;
   position: absolute;
   left: 0;

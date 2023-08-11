@@ -212,19 +212,21 @@ function createPaginationButtons(totalPages) {
     paginationContainer.appendChild(pageButton);
 
     if (i === currentPage) {
-      pageButton.classList.add("active");
+        pageButton.classList.add("active");
     }
 
-    pageButton.addEventListener("click", function () {
-      if (!this.classList.contains("active")) {
-        const activeButton = paginationContainer.querySelector(".current-page.active");
-        activeButton.classList.remove("active");
-        this.classList.add("active");
-        currentPage = i;
-        displayItems(currentPage, currentCategory);
-      }
+    pageButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default anchor click behavior
+
+        if (!this.classList.contains("active")) {
+            const activeButton = paginationContainer.querySelector(".current-page.active");
+            activeButton.classList.remove("active");
+            this.classList.add("active");
+            currentPage = i;
+            displayItems(currentPage, currentCategory);
+        }
     });
-  }
+}
 
   const nextButton = document.createElement("li");
   nextButton.classList.add("page-item", "next-page");

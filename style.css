@@ -539,6 +539,11 @@ section .title::after{
   color: var(--color-white);
   margin-bottom: 1.5rem;
 }
+.portfolios .portfolio-item .hover-items h5 {
+    font-size: .75rem;
+    color: var(--color-white);
+    margin-bottom: 5px;
+  }
 .portfolios .portfolio-item .hover-items h6 {
   font-size: .75rem;
   color: var(--color-white);

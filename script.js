@@ -156,6 +156,47 @@ $(document).ready(function(){
 //   });
 // });
 
+//calculation for my timeline
+// Calculate the duration between two dates
+function calculateDuration(startDate, endDate) {
+  const start = new Date(startDate);
+  const end = endDate === 'present' ? new Date() : new Date(endDate);
+
+  const years = end.getFullYear() - start.getFullYear();
+  const months = (end.getMonth() - start.getMonth()) + 1;
+  const totalMonths = years * 12 + months;
+
+  return { years, months, totalMonths };
+}
+
+// Update duration text for each timeline item
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+timelineItems.forEach((item, index) => {
+  const durationElement = item.querySelector('.tl-duration');
+  const endDate = index === 0 ? 'present' : durationElement.textContent.split(' - ')[1];
+  const { years, months, totalMonths } = calculateDuration(durationElement.textContent.split(' - ')[0], endDate);
+  let durationText = '';
+
+  if (totalMonths < 12) {
+    durationText += `${totalMonths} month${totalMonths === 1 ? '' : 's'}`;
+  } else {
+    if (years === 1) {
+      durationText += '1 year';
+    } else if (years > 1) {
+      durationText += `${years} years`;
+    }
+
+    if (months > 0) {
+      durationText += ` ${months} month${months === 1 ? '' : 's'}`;
+    }
+  }
+
+  const durationLine = item.querySelector('.tl-line');
+  durationLine.insertAdjacentHTML('afterend', `<p class="tl-duration-line">${durationText}</p>`);
+});
+
+
 //poftfolio classified buttons
 // JavaScript code for pagination and filtering
 const itemsPerPage = 6; // Number of items to display per page

@@ -410,7 +410,8 @@ section .title::after{
 }
 .timeline .timeline-item .tl-duration-line {
     padding: 0.2rem 0.6rem;
-    color: black;
+    background-color: green;
+    color: white;
     border-radius: 15px;
     display: inline-block;
     font-size: 0.8rem;

@@ -41,6 +41,24 @@ section{
     font-size: 18px;
     margin: 0 6px;
   }
+  .navbar .media-icons a:hover .fab.fa-linkedin-in {
+    color: #0077B5; /* Color for LinkedIn */
+}
+  .navbar .media-icons a:hover .fab.fa-github {
+    color: #211F1F; /* Color for GitHub */
+}
+  .navbar .media-icons a:hover .fab.fa-facebook-f {
+    color: #1877F2; /* Color for Facebook */
+}
+  .navbar .media-icons a:hover .fab.fa-twitter {
+    color: #1DA1F2; /* Color for Twitter */
+}
+  .navbar .media-icons a:hover .fab.fa-instagram {
+    color: #E4405F; /* Color for Instagram */
+}
+  .navbar .media-icons a:hover .fab.fa-skype {
+    color: #00AFF0; /* Color for Skype */
+}
   nav.sticky .media-icons a{
     color: #FFF;
   }

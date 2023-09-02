@@ -434,6 +434,7 @@ section .title::after{
 
 .timeline .timeline-item p {
     color: rgb(63, 63, 63);
+    margin-block-end: 1em;
 }
 
 .timeline .timeline-item .tl-line {
@@ -443,6 +444,10 @@ section .title::after{
     top: 14px;
     transform: translateY(-50%);
     z-index: -1;
+}
+
+.job-location {
+    margin-top: -18px;
 }
 
 @media screen and (max-width: 700px) {

@@ -360,4 +360,4 @@ window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-R5SLKL374R');
+  gtag('config', 'G-C718TJ3PZ7');

@@ -354,3 +354,10 @@ portfolioItems.forEach((item) => {
 const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
 createPaginationButtons(totalPages);
+
+//google analytics
+window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R5SLKL374R');

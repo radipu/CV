@@ -196,6 +196,104 @@ timelineItems.forEach((item, index) => {
   durationLine.insertAdjacentHTML('afterend', `<p class="tl-duration-line">${durationText}</p>`);
 });
 
+// Function to calculate the total experience duration
+function calculateTotalExperience() {
+  let totalYears = 0;
+  let totalMonths = 0;
+
+  timelineItems.forEach((item, index) => {
+    const durationElement = item.querySelector('.tl-duration');
+    const endDate = index === 0 ? 'present' : durationElement.textContent.split(' - ')[1];
+    const { years, months } = calculateDuration(durationElement.textContent.split(' - ')[0], endDate);
+
+    totalYears += years;
+    totalMonths += months;
+  });
+
+  totalYears += Math.floor(totalMonths / 12);
+  totalMonths = totalMonths % 12;
+
+  return { totalYears, totalMonths };
+}
+
+// Function to format the total experience duration
+function formatDuration(totalYears, totalMonths) {
+  let durationText = '';
+
+  if (totalYears > 0) {
+    durationText += `${totalYears} year${totalYears === 1 ? '' : 's'}`;
+  }
+
+  if (totalMonths > 0) {
+    if (totalYears > 0) {
+      durationText += ', ';
+    }
+
+    if (totalMonths === 1) {
+      durationText += '1 month';
+    } else {
+      durationText += `${totalMonths} months`;
+    }
+  }
+
+  return durationText;
+}
+
+// Calculate the total experience duration
+const totalExperience = calculateTotalExperience();
+
+// Update the "Overall Experience" text
+const overallExperienceText = document.getElementById('overall-experience');
+overallExperienceText.textContent = formatDuration(totalExperience.totalYears, totalExperience.totalMonths);
+
+// Update .NET Experience text (optional)
+// Function to calculate the ".NET Experience" duration
+function calculateDotNetExperience() {
+  let totalYears = 0;
+  let totalMonths = 0;
+
+  timelineItems.forEach((item, index) => {
+    const textContent = item.textContent;
+    const dotNetKeywords = [".NET", "C#"];
+    
+    if (dotNetKeywords.some(keyword => textContent.includes(keyword))) {
+      const durationElement = item.querySelector('.tl-duration');
+      const endDate = index === 0 ? 'present' : durationElement.textContent.split(' - ')[1];
+      const { years, months } = calculateDuration(durationElement.textContent.split(' - ')[0], endDate);
+
+      totalYears += years;
+      totalMonths += months;
+    }
+  });
+
+  totalYears += Math.floor(totalMonths / 12);
+  totalMonths = totalMonths % 12;
+
+  return { totalYears, totalMonths };
+}
+
+// Function to format the ".NET Experience" duration
+function formatDotNetExperience(totalYears, totalMonths) {
+  if (totalMonths === 0) {
+    return `${totalYears} year${totalYears === 1 ? '' : 's'}`;
+  } else if (totalMonths === 1) {
+    return `${totalYears} year, 1 month`;
+  } else {
+    return `${totalYears} years, ${totalMonths} months`;
+  }
+}
+
+// Function to update the ".NET Experience" text
+function updateDotNetExperience() {
+  const dotNetExperience = calculateDotNetExperience();
+  const dotNetExperienceText = document.getElementById('dotnet-experience');
+  dotNetExperienceText.textContent = formatDotNetExperience(dotNetExperience.totalYears, dotNetExperience.totalMonths);
+}
+
+// Calculate and update the ".NET Experience" duration
+updateDotNetExperience();
+
+
 
 //poftfolio classified buttons
 // JavaScript code for pagination and filtering

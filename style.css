@@ -660,6 +660,17 @@ section .title::after{
   }
 }
 
+
+.topcentered {
+    position: absolute;
+    background-color: rgba(0,0,0,.5);
+    width: 100%;
+    left: 0px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+  }
 .centered {
     position: absolute;
     background-color: rgba(0,0,0,.5);

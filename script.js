@@ -162,8 +162,20 @@ function calculateDuration(startDate, endDate) {
   const start = new Date(startDate);
   const end = endDate === 'present' ? new Date() : new Date(endDate);
 
-  const years = end.getFullYear() - start.getFullYear();
-  const months = (end.getMonth() - start.getMonth()) + 1;
+  let years = end.getFullYear() - start.getFullYear();
+  let months = (end.getMonth() - start.getMonth()) + 1;
+
+  // Adjust years and months based on day of the month
+  if (end.getDate() < start.getDate()) {
+    months--;
+  }
+
+  // If negative months, adjust years accordingly
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
   const totalMonths = years * 12 + months;
 
   return { years, months, totalMonths };

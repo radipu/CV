@@ -289,7 +289,7 @@ function formatDotNetExperience(totalYears, totalMonths) {
   if (totalMonths === 0) {
     return `${totalYears} year${totalYears === 1 ? '' : 's'}`;
   } else if (totalMonths === 1) {
-    return `${totalYears} year, 1 month`;
+    return `${totalYears} years, 1 month`;
   } else {
     return `${totalYears} years, ${totalMonths} months`;
   }

@@ -578,22 +578,58 @@ section .title::after{
     align-items: center;
 }
 
-.flurish-item img {
-    width: 200px;
-    height: auto;
+/* Container for image and label */
+.image-container {
+    position: relative;
+    width: 200px; /* Set width for the image */
+    overflow: hidden; /* Ensures label doesn't exceed image bounds */
     transition: transform 0.3s ease;
 }
 
-.flurish-item img:hover {
-    transform: scale(1.05);
+/* Book image styling with hover effect */
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
 }
 
-.book-title {
+.image-container:hover {
+    transform: scale(1.05); /* Scale both image and label together */
+}
+
+/* Styling for the overlay "Book" label */
+.publication-label {
+    position: absolute;
+    top: 35px;
+    left: 1px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    transform: rotate(-45deg); /* Rotate the label */
+    transform-origin: 0 0; /* Set the origin to the top left */
+    pointer-events: none; /* Prevents label from interfering with hover */
+}
+
+.publication-title span {
+    display: block;
+  }
+
+/* Book title styling */
+.publication-title {
     margin-top: 10px;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     color: #333; /* Adjust this color if necessary */
+}
+
+.publication-title2 {
+    font-size: 14px;
+    text-align: center;
+    color: #555; /* Adjust this color if necessary */
 }
 
 @media screen and (max-width: 700px) {

@@ -1238,3 +1238,46 @@ footer span a:hover{
     display: block;
     animation:  showItem 0.5s ease;
 }
+
+.website-btn {
+    position: fixed;
+    bottom: 70px;
+    right: 26px;
+    background-color: transparent;
+    color: crimson;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.website-btn .website-list {
+    display: none;
+    position: absolute;
+    top: 5;
+    left: -90px; /* Adjust this value as needed */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.website-btn:hover .website-list,
+.website-btn .website-list:hover {
+    display: block;
+}
+
+.website-btn .website-list a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.website-btn .website-list a:hover {
+    background-color: #f0f0f0;
+}

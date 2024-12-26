@@ -464,3 +464,8 @@ portfolioItems.forEach((item) => {
 const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
 createPaginationButtons(totalPages);
+
+document.querySelector('.website-btn').addEventListener('click', function() {
+  const websiteList = document.querySelector('.website-list');
+  websiteList.style.display = websiteList.style.display === 'block' ? 'none' : 'block';
+});

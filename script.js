@@ -469,3 +469,15 @@ document.querySelector('.website-btn').addEventListener('click', function() {
   const websiteList = document.querySelector('.website-list');
   websiteList.style.display = websiteList.style.display === 'block' ? 'none' : 'block';
 });
+
+function toggleReadMore() {
+  const moreContent = document.getElementById("moreContent");
+  const btn = document.getElementById("readMoreBtn");
+  if (moreContent.style.display === "none") {
+    moreContent.style.display = "block";
+    btn.textContent = "Read Less";
+  } else {
+    moreContent.style.display = "none";
+    btn.textContent = "Read More";
+  }
+}

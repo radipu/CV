@@ -1281,3 +1281,61 @@ footer span a:hover{
 .website-btn .website-list a:hover {
     background-color: #f0f0f0;
 }
+
+.read-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  #readMoreBtn {
+    background-color: #0078D4;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  #readMoreBtn:hover {
+    background-color: #005a9e;
+    transform: scale(1.05);
+  }
+
+  #readMoreBtn:active {
+    transform: scale(0.98);
+  }
+
+  #moreContent {
+    display: none;
+    margin-top: 20px;
+  }
+
+  .cv-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* spacing between the buttons */
+    margin-top: 20px;
+    flex-wrap: wrap; /* responsive */
+  }
+
+  .cv-button {
+    background-color: #0078D4;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .cv-button:hover {
+    background-color: #005a9e;
+    transform: scale(1.05);
+  }
+
+  .cv-button:active {
+    transform: scale(0.98);
+  }
